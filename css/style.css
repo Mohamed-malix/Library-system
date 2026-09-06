@@ -1,124 +1,129 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+::selection {
+  background-color: #71b7e6;
+  color: #9b59b6;
+  text-shadow: 0 0 1px white;
+}
+.background {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
+  height: 100%;
+  ;
+  width: 100%;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
 
-.background{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
+.form-back {
+  background-color: #fff;
+  border-radius: 12px;
 
-    height:100%;;
-    width:100%;
-    background:linear-gradient(135deg, #71b7e6, #9b59b6);
+  width: 75%;
+  margin: auto;
+  margin-top: 50px;
+  padding: 40px 20px 50px 20px;
 }
 
-.form-back{
-    background-color: #fff;
-    border-radius:12px;
-
-    width:75%;
-    margin: auto;
-    margin-top:50px;
-    padding:40px 20px 50px 20px;
+label {
+  font-size: 1.3rem;
 }
 
-label{
-    font-size: 1.3rem;
+.form-group {
+  width: 95%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  column-gap: 7px;
 }
 
-.form-group{
-    width:95%;
-    margin: auto;
-    display:flex;
-    align-items:center;
-    column-gap:7px;
+.form-header {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  margin-left: 25px;
 }
 
-.form-header{
-    font-size:1.8rem;
-    font-weight:500;
-    margin-bottom:20px;
-    margin-left:25px;
+.checkbox {
+  width: 95%;
+  margin-top: 10px;
+  margin-left: auto;
 }
 
-.checkbox{
-    width:95%;
-    margin-top: 10px;
-    margin-left:auto;
-}
-
-.chckbox-header{
-    font-size:1.4rem;
+.chckbox-header {
+  font-size: 1.4rem;
 }
 
 
-.boxes{
-    display:flex;
-    align-items:center;
-    justify-content: start;
-    column-gap:55px;
-    width:50%;
+.boxes {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  column-gap: 55px;
+  width: 50%;
 }
 
-.box{
-    display:flex;
-    align-items:center;
-    justify-content: start;
-    width:25%;
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 25%;
 }
 
 /*       */
 
-.box label{
-    white-space:nowrap;
-    margin-right:2px;
+.box label {
+  white-space: nowrap;
+  margin-right: 2px;
 }
 
-input[type="radio"]{
-    min-height: 24px;
-    min-width: 24px;
-    max-width: 55px;
-    max-height: 55px;
+input[type="radio"] {
+  min-height: 24px;
+  min-width: 24px;
+  max-width: 55px;
+  max-height: 55px;
 }
 
-input{
-    width:100%;
-    padding:5px;
-    height:35px;
+input {
+  width: 100%;
+  padding: 5px;
+  height: 35px;
 
-    border:1px solid #ccc;
-    border-radius:8px;
-    margin-block:20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-block: 20px;
 }
 
 
-input[type="search"]{
-    width:100%;
-    padding:8px;
-    height:45px;
-    margin-top:70px;
+input[type="search"] {
+  width: 100%;
+  padding: 8px;
+  height: 45px;
+  margin-top: 70px;
 }
 
-.btn-container{
-    display:flex;
-    justify-content: center;
-    margin-top:10px;
+.btn-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
 
-.btn{
-    background-color:#71b7e6;
-    font-size:1.3rem;
-    color:#fff;
+.btn {
+  background-color: #71b7e6;
+  font-size: 1.3rem;
+  color: #fff;
 
-    border-radius: 8px;
-    border:none;
+  border-radius: 8px;
+  border: none;
 
-    padding:12px;
-    width:95%;
+  padding: 12px;
+  width: 95%;
 }
 
 
@@ -129,97 +134,104 @@ input[type="search"]{
 
 /* table styling */
 
-.table{
-    background-color: #fff;
-    border-radius:12px;
+.table {
+  background-color: #fff;
+  border-radius: 12px;
 
-    width:75%;
-    margin: auto;
-    margin-top:70px;
-    margin-bottom:55px;
-    padding:40px 20px 50px 20px;
+  width: 75%;
+  margin: auto;
+  margin-top: 70px;
+  margin-bottom: 55px;
+  padding: 40px 20px 50px 20px;
 }
 
-table{
-    width:100%;
-    table-layout: fixed;
+table {
+  width: 100%;
+  table-layout: fixed;
 }
 
-.table-content{
-    width:100%;
-    border-collapse:collapse;
-    font-size:1.1rem;
-    min-width:380px;
+.table-content {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.1rem;
+  min-width: 380px;
 }
 
-.table-content thead{
-    width:100%;
+.table-content thead {
+  width: 100%;
 }
 
-.table-content thead tr{
-    background-color:#9b59b6;
-    font-weight:bold;
-    color:#fff;
-    
-}
-
-th{
-    text-align:start;
-    font-size:1.3rem;
-    margin-bottom:20px;
-}
-
-td{
-    font-size:1.1rem;
-}
-
-.table-content th, 
-.table-content td{
-    padding:8px 10px;
-    
-}
-
-.table-content tbody tr{
-    border-bottom:1px solid #ccc;
-}
-
-.table-content tbody tr:nth-of-type(even){
-    background-color:#f3f3f3;
-}
-
-
-.delete{
-    background-color:rgb(211, 3, 3);
-    color:#fff;
-    padding:7px 12px;
-    font-size:1.2rem;
-
-    border:none;
-    border-radius:10px;
+.table-content thead tr {
+  background-color: #9b59b6;
+  font-weight: bold;
+  color: #fff;
 
 }
 
+th {
+  text-align: start;
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
 
-.checkRead{
-    background-color: transparent;
-    color:#9b59b6;
+td {
+  font-size: 1.1rem;
+}
 
-    border:none;
-    border-bottom:3px solid #9b59b6;
+.table-content th,
+.table-content td {
+  padding: 8px 10px;
 
-    font-weight: 500;
-    font-size:1.14rem;
+}
+
+.table-content tbody tr {
+  border-bottom: 1px solid #ccc;
+}
+
+.table-content tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+
+.delete {
+  background-color: rgb(211, 3, 3);
+  color: #fff;
+  padding: 7px 12px;
+  font-size: 1.2rem;
+
+  border: none;
+  border-radius: 10px;
+}
+
+
+.checkRead {
+  background-color: transparent;
+  color: #9b59b6;
+
+  border: none;
+  border-bottom: 3px solid #9b59b6;
+
+  font-weight: 500;
+  font-size: 1.14rem;
 }
 
 
 
-input::selection,
-label::selection, 
-div::selection, 
-span::selection, 
-table::selection,
- th::selection,
- td::selection{
-    background-color: #71b7e6;
-    color:#fff;
+/*//// UI Imporve //////*/
+.btn,
+.delete,
+.checkRead,
+.boxes input {
+  cursor: pointer;
 }
+
+.btn:hover,
+.delete:hover{
+  box-shadow: 0 0 5px black;
+}
+
+label {
+  letter-spacing: 1px;
+}
+
+/*//// UI Imporve //////*/
