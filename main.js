@@ -11,12 +11,10 @@ let bookRead;
 
 
 
+
+
 let books = [];
 
-
-
-
-//to make the code clean
 onload = () => {
   if (localStorage.getItem("books")) {
     books = JSON.parse(localStorage.getItem("books"))
