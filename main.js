@@ -63,7 +63,6 @@ form.addEventListener('submit', (e) => {
 
 class Book{
 
-
   constructor(value1,value2,value3,value4,value5){
     this.name=value1.value;
     this.author=value2.value;
