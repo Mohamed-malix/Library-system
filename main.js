@@ -19,7 +19,7 @@ onload = () => {
   if (localStorage.getItem("books")) {
     books = JSON.parse(localStorage.getItem("books"))
   }
-  //this'll fix not update when reload
+ 
   displayBook();
 }
 
@@ -61,17 +61,27 @@ form.addEventListener('submit', (e) => {
 
 
 
-function Book(name, author, pages, read, rating) {
+class Book{
 
-  if (!new.target) {
-    console.log("You need to use 'new' key word!");
+
+  constructor(value1,value2,value3,value4,value5){
+    this.name=value1.value;
+    this.author=value2.value;
+    this.pages=value3.value;
+    this.read=value4;
+    this.rating=value5.value;
   }
 
-  this.name = name.value;
-  this.author = author.value;
-  this.pages = pages.value;
-  this.read = read;
-  this.rating = rating.value;
+  get(){
+
+    return { 
+      name:this.name, 
+      author:this.author,
+      pages:this.pages,
+      read:this.read,
+      rating:this.rating }
+
+  }
 
 }
 
