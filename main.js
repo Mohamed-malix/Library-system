@@ -8,7 +8,6 @@ let search = document.querySelector("#search");
 let fields = Array.from(document.querySelectorAll(".field"));
 console.log(fields);
 let bookRead;
-
 let books = [];
 
 onload = () => {
@@ -20,33 +19,40 @@ onload = () => {
 };
 
  //check Validate
-  console.log(`ist working here?`);
-  fields.forEach((field) => {
-    field.addEventListener('input', () => {
-      console.log(field.validity.valueMissing, field.validity.tooShort);
-    if(field.validity.valueMissing){
-      field.setCustomValidity(`The ${field.name} field is required`);
-      console.log(`The ${field.name} is required`);
-    }
+fields.forEach((field) => {
+  field.addEventListener("input", () => {
+    // console.log(`ist working here?`);
+    console.log("from input",field.validity.valueMissing, field.validity.badInput);
 
-    if(field.validity.tooShort){
-      field.setCustomValidity(`The input for the ${field.name} is too short!`);
-    }
-
-    if(field.validity.tooLong){
-      field.setCustomValidity(`The input for the ${field.name} is too long!`);
-    }
-
-    if(field.validity.badInput){
+    field.setCustomValidity("");
+    if(field.validity.typeMismatch){
+      console.log("typeMismatch, input")
       field.setCustomValidity(`Please enter valid input for ${field.name} field!`);
+    }else if(field.validity.badInput){
+      console.log("badInput, input")
+      field.setCustomValidity(`Please enter valid input for ${field.name} field!`);
+    }else if(field.validity.valueMissing){
+      field.setCustomValidity(`The ${field.name} field is required`);
+    }else if(field.validity.tooShort){
+      console.log("tooshort, input")
+      field.setCustomValidity(`The input for the ${field.name} is too short!`);
+    }else if(field.validity.tooLong){
+      console.log("toolong, input")
+      field.setCustomValidity(`The input for the ${field.name} is too long!`);
+    }else{
+      console.log("else '', input")
+      field.setCustomValidity("");
     }
-    })
 
   })
 
+});
+
+
 form.addEventListener("submit", (e) => {
 
-  e.preventDefault();
+  e.preventDefault(); 
+  validateField()
   let bookState = document.querySelector('[name="bookState"]:checked');
   if (bookState) {
     bookRead = bookState.value;
@@ -127,6 +133,37 @@ function changeState(index) {
 
   localStorage.setItem("books", JSON.stringify(books));
   displayBook();
+}
+
+function validateField() {
+
+    fields.forEach((field) => {
+    field.addEventListener("submit", () => {
+
+    console.log("From the submit",field.validity.valueMissing, field.validity.tooShort);
+    if(field.validity.valueMissing){
+      console.log("value missing")
+      field.setCustomValidity(`The ${field.name} field is required`);
+      console.log(`The ${field.name} is required`);
+    }else if(field.validity.typeMismatch){
+      console.log("type missmatch, submit")
+      field.setCustomValidity(`Please enter valid input for ${field.name} field!`);
+    }else if(field.validity.badInput){
+      console.log("badInput, submit")
+      field.setCustomValidity(`Please enter valid input for ${field.name} field!`);
+    }else if(field.validity.tooShort){
+      console.log("tooshort, submit")
+      field.setCustomValidity(`The input for the ${field.name} is too short!`);
+    }else if(field.validity.tooLong){
+      console.log("tooLong, submit")
+      field.setCustomValidity(`The input for the ${field.name} is too long!`);
+    }else{
+      console.log("else '', submit")
+      field.setCustomValidity("");
+    }
+   })
+
+  }) 
 }
 
 search.addEventListener("keyup", (e) => {

@@ -14,14 +14,14 @@
  <div class="background">
      <div class="form-back">
 
-        <form>
+        <form onsubmit="validateField()">
             <h2 class="form-header"> Enter the book details:</h2>
             
             <div class="book-details">
 
                 <div class="form-group">
                 <label for="name">Name:</label>
-                <input type="text" name="name" id="name" minlength="3" maxlength="100" class="field" required>
+                <input type="text" name="name" id="name" minlength="3" class="field" required>
               </div>
               <div class="form-group">
                 <label for="author">Author:</label>
