@@ -29,19 +29,14 @@ fields.forEach((field) => {
 
     clearError(spanError, field);
     if (field.validity.typeMismatch) {
-      field.setCustomValidity("Error");
       setError(spanError, `Please enter valid input for ${field.name} field!`);
     } else if (field.validity.badInput) {
-      field.setCustomValidity("Error");
       setError(spanError, `Please enter valid input for ${field.name} field!`);
     } else if (field.validity.valueMissing) {
-      field.setCustomValidity("Error");
       setError(spanError, `The ${field.name} field is required`);
     } else if (field.validity.tooShort) {
-      field.setCustomValidity("Error");
       setError(spanError, `The input for the ${field.name} is too short!`);
     } else if (field.validity.tooLong) {
-      field.setCustomValidity("Error");
       setError(spanError, `The input for the ${field.name} is too long!`);
     } else {
       clearError(spanError, field);
@@ -159,25 +154,20 @@ function validateField(event) {
 
     clearError(spanError, field);
     if (field.validity.typeMismatch) {
-      field.setCustomValidity("Error");
       setError(spanError, `Please enter valid input for ${field.name} field!`);
-      event.stopImmediatePropagation();
+      event.preventDefault();
     } else if (field.validity.badInput) {
-      field.setCustomValidity("Error");
       setError(spanError, `Please enter valid input for ${field.name} field!`);
-      event.stopImmediatePropagation();
+      event.preventDefault();
     } else if (field.validity.valueMissing) {
-      field.setCustomValidity("Error");
       setError(spanError, `The ${field.name} field is required`);
-      event.stopImmediatePropagation();
+      event.preventDefault();
     } else if (field.validity.tooShort) {
-      field.setCustomValidity("Error");
       setError(spanError, `The input for the ${field.name} is too short!`);
-      event.stopImmediatePropagation();
+      event.preventDefault();
     } else if (field.validity.tooLong) {
-      field.setCustomValidity("Error");
       setError(spanError, `The input for the ${field.name} is too long!`);
-      event.stopImmediatePropagation();
+      event.preventDefault();
     } else {
       clearError(spanError, field);
     }
