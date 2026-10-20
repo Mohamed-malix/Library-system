@@ -19,6 +19,7 @@ onload = () => {
 };
 
 //check Validate
+form.noValidate = true;
 fields.forEach((field) => {
   field.addEventListener("input", () => {
     // console.log(`ist working here?`);
@@ -31,26 +32,22 @@ fields.forEach((field) => {
     clearError(spanError, field);
     if (field.validity.typeMismatch) {
       console.log("typeMismatch, input");
-      field.setCustomValidity(
-        `Please enter valid input for ${field.name} field!`,
-      );
+      field.setCustomValidity("Error");
       setError(spanError, `Please enter valid input for ${field.name} field!`);
     } else if (field.validity.badInput) {
       console.log("badInput, input");
-      field.setCustomValidity(
-        `Please enter valid input for ${field.name} field!`,
-      );
+      field.setCustomValidity("Error");
       spanError.textContent = `Please enter valid input for ${field.name} field!`;
     } else if (field.validity.valueMissing) {
-      field.setCustomValidity(`The ${field.name} field is required`);
+      field.setCustomValidity("Error");
       setError(spanError, `The ${field.name} field is required`);
     } else if (field.validity.tooShort) {
       console.log("tooshort, input");
-      field.setCustomValidity(`The input for the ${field.name} is too short!`);
+      field.setCustomValidity("Error");
       setError(spanError, `The input for the ${field.name} is too short!`);
     } else if (field.validity.tooLong) {
       console.log("toolong, input");
-      field.setCustomValidity(`The input for the ${field.name} is too long!`);
+      field.setCustomValidity("Error");
       setError(spanError, `The input for the ${field.name} is too long!`);
     } else {
       console.log("else '', input", spanError);
@@ -61,22 +58,24 @@ fields.forEach((field) => {
 });
 
 form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  validateField();
-  
-  let bookState = document.querySelector('[name="bookState"]:checked');
-  if (bookState) {
-    bookRead = bookState.value;
+  if (!form.checkValidity()) {
+    e.preventDefault();
+    validateField(e);
   } else {
-    bookRead = "not selected";
+    let bookState = document.querySelector('[name="bookState"]:checked');
+    if (bookState) {
+      bookRead = bookState.value;
+    } else {
+      bookRead = "not selected";
+    }
+
+    let book = new Book(bookName, bookAuthor, bookPages, bookRead, bookRating);
+    books.push(book);
+    localStorage.setItem("books", JSON.stringify(books));
+
+    displayBook();
+    clear();
   }
-
-  let book = new Book(bookName, bookAuthor, bookPages, bookRead, bookRating);
-  books.push(book);
-  localStorage.setItem("books", JSON.stringify(books));
-
-  displayBook();
-  clear();
 });
 
 class Book {
@@ -158,44 +157,44 @@ function clearError(spanError, field) {
   spanError.className = "error";
 }
 
-function validateField() {
+function validateField(event) {
   fields.forEach((field) => {
-    field.addEventListener("submit", () => {
-      const fieldName = field.name;
-      const spanError = document.querySelector(
-        `[class="${fieldName}"] + span.error`,
-      );
-      console.log("from input", field.validity.valueMissing, spanError);
+    const fieldName = field.name;
+    const spanError = document.querySelector(
+      `[class="${fieldName}"] + span.error`,
+    );
+    console.log("from submit", field.validity.valueMissing, spanError);
 
+    clearError(spanError, field);
+    if (field.validity.typeMismatch) {
+      console.log("typeMismatch, input");
+      field.setCustomValidity("Error");
+      setError(spanError, `Please enter valid input for ${field.name} field!`);
+      event.stopImmediatePropagation();
+    } else if (field.validity.badInput) {
+      console.log("badInput, input");
+      field.setCustomValidity("Error");
+      spanError.textContent = `Please enter valid input for ${field.name} field!`;
+      event.stopImmediatePropagation();
+    } else if (field.validity.valueMissing) {
+      field.setCustomValidity("Error");
+      setError(spanError, `The ${field.name} field is required`);
+      event.stopImmediatePropagation();
+    } else if (field.validity.tooShort) {
+      console.log("tooshort, input");
+      field.setCustomValidity("Error");
+      setError(spanError, `The input for the ${field.name} is too short!`);
+      event.stopImmediatePropagation();
+    } else if (field.validity.tooLong) {
+      console.log("toolong, input");
+      field.setCustomValidity("Error");
+      setError(spanError, `The input for the ${field.name} is too long!`);
+      event.stopImmediatePropagation();
+    } else {
+      console.log("else '', submit", spanError);
       clearError(spanError, field);
-      if (field.validity.typeMismatch) {
-        console.log("typeMismatch, input");
-        field.setCustomValidity("Error");
-        setError(
-          spanError,
-          `Please enter valid input for ${field.name} field!`,
-        );
-      } else if (field.validity.badInput) {
-        console.log("badInput, input");
-        field.setCustomValidity("Error");
-        spanError.textContent = `Please enter valid input for ${field.name} field!`;
-      } else if (field.validity.valueMissing) {
-        field.setCustomValidity("Error");
-        setError(spanError, `The ${field.name} field is required`);
-      } else if (field.validity.tooShort) {
-        console.log("tooshort, input");
-        field.setCustomValidity("Error");
-        setError(spanError, `The input for the ${field.name} is too short!`);
-      } else if (field.validity.tooLong) {
-        console.log("toolong, input");
-        field.setCustomValidity("Error");
-        setError(spanError, `The input for the ${field.name} is too long!`);
-      } else {
-        console.log("else '', input", spanError);
-        clearError(spanError, field);
-        console.log("else '',check input", spanError, spanError.value);
-      }
-    });
+      console.log("else '',check submit", spanError, spanError.value);
+    }
   });
 }
 
