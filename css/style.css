@@ -234,3 +234,18 @@ label {
   letter-spacing: 1px;
 }
 
+.error {
+  opacity: 0;
+  height:12px;
+  
+}
+
+.active {
+  opacity: 1;
+  color:#ff3860;
+  font-size:1.3em;
+  
+  margin-left:6rem;
+  margin-top:-7px;
+  
+}

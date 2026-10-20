@@ -14,28 +14,43 @@
  <div class="background">
      <div class="form-back">
 
-        <form onsubmit="validateField()">
+        <form novalidate>
             <h2 class="form-header"> Enter the book details:</h2>
             
             <div class="book-details">
 
+               <div class="name">
                 <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" name="name" id="name" minlength="3" class="field" required>
-              </div>
-              <div class="form-group">
-                <label for="author">Author:</label>
-                <input type="text" name="author" id="author" minlength="3" maxlength="55" class="field" required>
-             </div>
-             <div class="form-group">
+                </div>
+               </div>
+               <span class="error"></span>
+
+               <div class="author">
+                  <div class="form-group">
+                    <label for="author">Author:</label>
+                    <input type="text" name="author" id="author" minlength="3" maxlength="55" class="field" required>
+                   </div>
+               </div>
+               <span class="error"></span>
+             
+             <div class="pages">
+               <div class="form-group">
                 <label for="pages">Pages:</label>
                 <input type="number" name="pages" id="pages" class="field" required>
              </div>
-             <div class="form-group">
+             </div>
+               <span class="error"></span>
+
+             <div class="rating">
+               <div class="form-group">
                 <label for="rating">Rating:</label>
                 <input type="text" name="rating" id="rating" class="field" required>
-             </div>             
-             
+              </div> 
+             </div>            
+             <span class="error"></span>
+
             </div>
             
             <div class="checkbox">
